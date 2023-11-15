@@ -23,16 +23,17 @@ jobs:
           arguments: build
           build-root-directory: app
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./app/gradlew
+      - name: Build with Gradle
+        run: ./app/gradlew build
       - name: Generate JaCoCo report
-        with:
-          build-root-directory: app
-          run: ./app/gradlew jacocoTestReport
-
+        run: ./app/gradlew jacocoTestReport
       - name: Upload JaCoCo report
         uses: actions/upload-artifact@v2
         with:
           name: jacoco-report
-          path: build/reports/jacoco/test/html/index.html
+          path: ./app/build/reports/jacoco/test/html/index.html
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
