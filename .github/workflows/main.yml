@@ -22,8 +22,8 @@ jobs:
         with:
           arguments: build
           build-root-directory: app
-
-      - run: ./app/gradlew jacocoTestReport
+      - name: Run all checks, disabling dependency graph generation
+        run: cd app && ./gradlew check
 
       - name: Upload JaCoCo report
         uses: actions/upload-artifact@v2
