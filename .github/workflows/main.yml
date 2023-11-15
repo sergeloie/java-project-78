@@ -23,9 +23,6 @@ jobs:
           arguments: build
           build-root-directory: app
 
-      - name: Generate JaCoCo report
-        with:
-          build-root-directory: app
         run: ./app/gradlew jacocoTestReport
 
       - name: Upload JaCoCo report
