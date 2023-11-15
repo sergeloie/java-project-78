@@ -24,7 +24,7 @@ jobs:
           build-root-directory: app
 
       - name: Generate JaCoCo report
-        run: report
+        run: ./app/gradlew jacocoTestReport
 
       - name: Upload JaCoCo report
         uses: actions/upload-artifact@v2
