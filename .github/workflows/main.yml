@@ -23,13 +23,14 @@ jobs:
           arguments: build
           build-root-directory: app
 
-      - name: Publish code coverage
-        uses: paambaati/codeclimate-action@v3.0.0
-        env:
-          JACOCO_SOURCE_PATH: app/src/main/java
+      - name: Generate JaCoCo report
+        run: report
+
+      - name: Upload JaCoCo report
+        uses: actions/upload-artifact@v2
         with:
-          coverageCommand: make report
-          coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+          name: jacoco-report
+          path: build/reports/jacoco/test/html/index.html
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
