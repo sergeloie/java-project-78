@@ -16,30 +16,23 @@ public abstract class BaseSchema<T> {
      */
     public boolean isValid(T object) {
 
-        for (Predicate<T> predicate : predicates) {
-            System.out.println(predicate.test(object));
+        if (object == null) {
+            return predicates.stream().noneMatch(Objects::nonNull);
         }
-
         return predicates.stream().allMatch(predicate -> predicate.test(object));
-//
-//        if (object == null && predicates.stream().noneMatch(predicate -> predicate == (Predicate<T>) Objects::nonNull)) {
-//            return true;
-//        }
-//
-//        return predicates.stream().allMatch(predicate -> predicate.test(object));
+    }
 
-//        if (object == null) {
-//            return predicates.isEmpty() ? true : predicates.stream().anyMatch(predicate -> !predicate.test(null));
-//        }
-//        return predicates.stream().allMatch(predicate -> predicate.test(object));
-    };
 
     public void addPredicate(Predicate<T> predicate) {
         predicates.add(predicate);
     }
 
     public boolean containsNullCheck() {
-        return predicates.stream().anyMatch(predicate -> predicate.test(null));
-        };
+        return predicates.stream().anyMatch(Objects::nonNull);
+    };
+
+    public boolean notContainsNullCheck() {
+        return predicates.stream().noneMatch(Objects::nonNull);
+    }
 
 }

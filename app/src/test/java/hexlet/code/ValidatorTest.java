@@ -19,10 +19,17 @@ public class ValidatorTest {
         Validator v = new Validator();
         NumberSchema schema = v.number();
 
-        System.out.println(schema.isValid(null));
-        schema.required();
-        System.out.println(schema.predicates);
-        System.out.println(schema.isValid(null));
+//        System.out.println("before required");
+//        System.out.println("schema.isValid(null) - " + schema.isValid(null));
+//        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
+//        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
+//        schema.required();
+//        System.out.println("after required");
+//        System.out.println(schema.predicates);
+//        System.out.println("schema.isValid(null) - " + schema.isValid(null));
+//        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
+//        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
+
 
 //        System.out.println(schema.isValid(null));
 //        System.out.println(schema.predicates);
@@ -37,11 +44,11 @@ public class ValidatorTest {
 //
 //        System.out.println(schema.predicates);
 //
-//        //assertFalse(schema.isValid(null));
+//        assertFalse(schema.isValid(null));
 //        assertTrue(schema.isValid(10));
 //        assertFalse(schema.isValid(-10));
 //        assertFalse(schema.isValid(0));
-
+//
 //        schema.range(5, 10);
 //
 //        assertTrue(schema.isValid(5));
@@ -123,6 +130,34 @@ public class ValidatorTest {
 //        human4.put("age", -5);
 //        assertFalse(schema.isValid(human4));
 //    }
+
+    @Test
+    void tempTest() {
+        Validator v = new Validator();
+        NumberSchema schema = v.number();
+
+        schema.positive();
+        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
+        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
+
+//        System.out.println("before required");
+//        System.out.println("schema.isValid(null) - " + schema.isValid(null));
+//        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
+//        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
+//        schema.required();
+//        System.out.println("after required");
+//        System.out.println(schema.predicates);
+//        System.out.println("schema.isValid(null) - " + schema.isValid(null));
+//        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
+//        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
+
+
+//        System.out.println(schema.isValid(null));
+//        System.out.println(schema.predicates);
+//        schema.required();
+//        System.out.println(schema.isValid(null));
+//        System.out.println(schema.predicates);
+    }
 
 
 }
