@@ -6,7 +6,7 @@ public final class NumberSchema extends BaseSchema<Integer> {
 
 
     public NumberSchema required() {
-        addPredicate(x -> x != null);
+        addPredicate(Objects::nonNull);
         return this;
     }
 

@@ -16,10 +16,24 @@ public abstract class BaseSchema<T> {
      */
     public boolean isValid(T object) {
 
-        if (object == null) {
-            return predicates.stream().noneMatch(Objects::nonNull);
+//        if (predicates.isEmpty()) {
+//            return true;
+//        }
+
+        if (object != null) {
+            return predicates.stream().allMatch(predicate -> predicate.test(object));
+        } else {
+            for (Predicate<T> predicate : predicates) {
+                try {
+                    if (!predicate.test(null)) {
+                        return false;
+                    }
+                } catch (NullPointerException npe) {
+                    System.out.println("Ошибка. NullPointerException !!!!11111адинадин");
+                }
+            }
         }
-        return predicates.stream().allMatch(predicate -> predicate.test(object));
+        return true;
     }
 
 
@@ -27,12 +41,15 @@ public abstract class BaseSchema<T> {
         predicates.add(predicate);
     }
 
-    public boolean containsNullCheck() {
-        return predicates.stream().anyMatch(Objects::nonNull);
-    };
+//    public boolean containsNullCheck() {
+//
+//        return predicates.stream().anyMatch(predicate -> predicate.test());
+//    };
+//
+//    public boolean notContainsNullCheck() {
+//        return predicates.stream().noneMatch(Objects::nonNull);
+//    }
 
-    public boolean notContainsNullCheck() {
-        return predicates.stream().noneMatch(Objects::nonNull);
-    }
+
 
 }

@@ -8,34 +8,18 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ValidatorTest {
+//public class ValidatorTest {
 
-    @Test
-    void numberSchemaTest() {
-        Validator v = new Validator();
-        NumberSchema schema = v.number();
-
-//        System.out.println("before required");
-//        System.out.println("schema.isValid(null) - " + schema.isValid(null));
-//        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
-//        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
-//        schema.required();
-//        System.out.println("after required");
-//        System.out.println(schema.predicates);
-//        System.out.println("schema.isValid(null) - " + schema.isValid(null));
-//        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
-//        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
-
-
-//        System.out.println(schema.isValid(null));
-//        System.out.println(schema.predicates);
-//        schema.required();
-//        System.out.println(schema.isValid(null));
-//        System.out.println(schema.predicates);
+//    @Test
+//    void numberSchemaTest() {
+//        Validator v = new Validator();
+//        NumberSchema schema = v.number();
 
 //        assertTrue(schema.isValid(null));
 //        assertTrue(schema.positive().isValid(null));
@@ -55,7 +39,7 @@ public class ValidatorTest {
 //        assertTrue(schema.isValid(10));
 //        assertFalse(schema.isValid(4));
 //        assertFalse(schema.isValid(11));
-    }
+//    }
 
 //    @Test
 //    void stringSchemaTest() {
@@ -131,33 +115,4 @@ public class ValidatorTest {
 //        assertFalse(schema.isValid(human4));
 //    }
 
-    @Test
-    void tempTest() {
-        Validator v = new Validator();
-        NumberSchema schema = v.number();
-
-        schema.positive();
-        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
-        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
-
-//        System.out.println("before required");
-//        System.out.println("schema.isValid(null) - " + schema.isValid(null));
-//        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
-//        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
-//        schema.required();
-//        System.out.println("after required");
-//        System.out.println(schema.predicates);
-//        System.out.println("schema.isValid(null) - " + schema.isValid(null));
-//        System.out.println("schema.containsNullCheck() - " + schema.containsNullCheck());
-//        System.out.println("schema.notContainsNullCheck() - " + schema.notContainsNullCheck());
-
-
-//        System.out.println(schema.isValid(null));
-//        System.out.println(schema.predicates);
-//        schema.required();
-//        System.out.println(schema.isValid(null));
-//        System.out.println(schema.predicates);
-    }
-
-
-}
+//}
