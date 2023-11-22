@@ -9,16 +9,11 @@ public abstract class BaseSchema<T> {
 
     public List<Predicate<T>> predicates = new ArrayList<>();
 
-
     /**
      * @param object for validating
      * @return status of validation
      */
     public boolean isValid(T object) {
-
-//        if (predicates.isEmpty()) {
-//            return true;
-//        }
 
         if (object != null) {
             return predicates.stream().allMatch(predicate -> predicate.test(object));
@@ -36,20 +31,7 @@ public abstract class BaseSchema<T> {
         return true;
     }
 
-
     public void addPredicate(Predicate<T> predicate) {
         predicates.add(predicate);
     }
-
-//    public boolean containsNullCheck() {
-//
-//        return predicates.stream().anyMatch(predicate -> predicate.test());
-//    };
-//
-//    public boolean notContainsNullCheck() {
-//        return predicates.stream().noneMatch(Objects::nonNull);
-//    }
-
-
-
 }
