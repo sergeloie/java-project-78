@@ -2,12 +2,11 @@ package hexlet.code.schemas;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema<T> {
 
-    public List<Predicate<T>> predicates = new ArrayList<>();
+    private List<Predicate<T>> predicates = new ArrayList<>();
 
     /**
      * @param object for validating
@@ -31,7 +30,11 @@ public abstract class BaseSchema<T> {
         return true;
     }
 
+    /**
+     * @param predicate for validating
+     */
     public void addPredicate(Predicate<T> predicate) {
         predicates.add(predicate);
     }
+
 }
