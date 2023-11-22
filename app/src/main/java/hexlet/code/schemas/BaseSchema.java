@@ -22,8 +22,7 @@ public abstract class BaseSchema<T> {
                     if (!predicate.test(null)) {
                         return false;
                     }
-                } catch (NullPointerException npe) {
-                    System.out.println("Ошибка. NullPointerException !!!!11111адинадин");
+                } catch (NullPointerException ignored) {
                 }
             }
         }
