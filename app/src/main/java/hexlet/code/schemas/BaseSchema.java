@@ -41,10 +41,10 @@ public abstract class BaseSchema {
     }
 
     /**
-     * @param required set reqired field
+     * @param req set reqired field
      */
-    public void setRequired(boolean required) {
-        this.required = required;
+    public void setRequired(boolean req) {
+        this.required = req;
     }
 
 }
