@@ -4,36 +4,47 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class BaseSchema<T> {
+public abstract class BaseSchema {
 
-    private List<Predicate<T>> predicates = new ArrayList<>();
+
+
+    private boolean required = false;
+
+    private List<Predicate<Object>> predicates = new ArrayList<>();
 
     /**
      * @param object for validating
      * @return status of validation
      */
-    public boolean isValid(T object) {
+    public boolean isValid(Object object) {
 
-        if (object != null) {
-            return predicates.stream().allMatch(predicate -> predicate.test(object));
+        if (checkIfNull(object)) {
+            return !required;
         } else {
-            for (Predicate<T> predicate : predicates) {
-                try {
-                    if (!predicate.test(null)) {
-                        return false;
-                    }
-                } catch (NullPointerException ignored) {
-                }
-            }
+            return predicates.stream().allMatch(predicate -> predicate.test(object));
         }
-        return true;
     }
 
     /**
      * @param predicate for validating
      */
-    public void addPredicate(Predicate<T> predicate) {
+    public void addPredicate(Predicate<Object> predicate) {
         predicates.add(predicate);
+    }
+
+    /**
+     * @param object to check if Null or Empty
+     * @return result of checking
+     */
+    public boolean checkIfNull(Object object) {
+        return object == null;
+    }
+
+    /**
+     * @param required set reqired field
+     */
+    public void setRequired(boolean required) {
+        this.required = required;
     }
 
 }

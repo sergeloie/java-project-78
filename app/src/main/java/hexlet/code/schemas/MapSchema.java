@@ -2,19 +2,18 @@ package hexlet.code.schemas;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-public final class MapSchema extends BaseSchema<Map> {
+public final class MapSchema extends BaseSchema {
 
     private Map<String, BaseSchema> schemas = new HashMap<>();
 
     public MapSchema required() {
-        addPredicate(Objects::nonNull);
+        setRequired(true);
         return this;
     }
 
     public MapSchema sizeof(int x) {
-        addPredicate(m -> m.size() == x);
+        addPredicate(m -> ((Map) m).size() == x);
         return this;
     }
 
@@ -39,10 +38,10 @@ public final class MapSchema extends BaseSchema<Map> {
     }
 
     @Override
-    public boolean isValid(Map object) {
+    public boolean isValid(Object object) {
 
         if (object != null && !schemas.isEmpty()) {
-            return innerCheck(object);
+            return innerCheck((Map) object);
         } else {
             return super.isValid(object);
         }

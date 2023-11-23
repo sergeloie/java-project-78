@@ -1,21 +1,20 @@
 package hexlet.code.schemas;
 
-import java.util.Objects;
+public final class NumberSchema extends BaseSchema {
 
-public final class NumberSchema extends BaseSchema<Integer> {
 
     public NumberSchema required() {
-        addPredicate(Objects::nonNull);
+        setRequired(true);
         return this;
     }
 
     public NumberSchema positive() {
-        addPredicate(i -> i > 0);
+        addPredicate(i -> i instanceof Integer && ((Integer) i) > 0);
         return this;
     }
 
     public NumberSchema range(int a, int b) {
-        addPredicate(i -> (i >= a && i <= b));
+        addPredicate(i -> i instanceof Integer && (((Integer) i) >= a && ((Integer) i) <= b));
         return this;
     }
 }

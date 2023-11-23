@@ -1,23 +1,24 @@
 package hexlet.code.schemas;
 
-import java.util.Objects;
-
-public final class StringSchema extends BaseSchema<String> {
-
+public final class StringSchema extends BaseSchema {
 
     public StringSchema required() {
-        addPredicate(Objects::nonNull);
-        addPredicate(s -> !s.isEmpty());
+        setRequired(true);
         return this;
     }
 
     public StringSchema minLength(int minLength) {
-        addPredicate(s -> s.length() >= minLength);
+        addPredicate(s -> ((String) s).length() >= minLength);
         return this;
     }
 
     public StringSchema contains(String contains) {
-        addPredicate(s -> s.contains(contains));
+        addPredicate(s -> ((String) s).contains(contains));
         return this;
+    }
+
+    @Override
+    public boolean checkIfNull(Object object) {
+        return object == null || ((String) object).isEmpty();
     }
 }
