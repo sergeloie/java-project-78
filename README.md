@@ -4,4 +4,4 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sergeloie_java-project-78&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sergeloie_java-project-78)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sergeloie_java-project-78&metric=coverage)](https://sonarcloud.io/summary/new_code?id=sergeloie_java-project-78)
 
-я сломал CodeClimate, поэтому проверки от SonarCloud
+update readme
